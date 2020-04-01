@@ -2,11 +2,13 @@
   "presets": [
     ["@babel/preset-env", {
         "useBuiltIns": "usage",
-        "corejs": 3
+        "corejs": 3,
         // targets 配置没用啊卧槽
-        // "targets": {
-        //   "ie": 10
-        // }
+        // 有用的
+        "targets": {
+          "ie": "8"
+        }
+        
       }
     ]
   ]
