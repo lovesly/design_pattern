@@ -15,6 +15,18 @@ class Person {
   }
 }
 
-const z = new Person('zz', 27);
+class Student extends Person {
+  constructor(name, age, number) {
+    super(name, age);
+    this.number = number;
+  }
+
+  study() {
+    console.log(`${name} is studying`)
+  }
+}
+
+const z = new Student('zz', 27, 15);
 z.eat();
 z.speak();
+z.study();

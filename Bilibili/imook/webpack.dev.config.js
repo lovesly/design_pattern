@@ -1,13 +1,37 @@
 const path = require('path');
+const fs = require('fs');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 
+const filePath = path.join(__dirname, 'src');
+// 多入口？参考 zz-axios
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  // 多入口配置，。。。
+  entry: fs.readdirSync(filePath).reduce((entries, dir) => {
+    const fullDir = path.join(filePath, dir);
+    const entry = path.join(fullDir, 'index.js');
+    // ??
+    console.log('entries: ', entries)
+    if (fs.statSync(fullDir).isDirectory() && fs.existsSync(entry)) {
+      // entries[dir] = ['webpack-hot-middleware/client', entry]
+      entries[dir] = [entry];
+    }
+    return entries;
+  }, {}),
+
+  /**
+   * 根据不同的目录名称，打包生成目标 js，名称和目录名一致
+   */
   output: {
-    path: __dirname,
-    filename: './release/bundle.js'
+    path: path.join(__dirname, 'release'),
+    filename: '[name].bundle.js',
+    // publicPath: '/__build__/'
   },
+  // entry: './src/index.js',
+  // output: {
+  //   path: __dirname,
+  //   filename: './release/bundle.js'
+  // },
   module: {
     rules: [
       { 
