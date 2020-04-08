@@ -4,7 +4,7 @@
 // import "core-js";
 // import "core-js/es/array";
 // import "core-js/proposals/math-extensions";
-import './demo1';
+// import './demo1';
 
 function test() {
   new Promise(() => {})
