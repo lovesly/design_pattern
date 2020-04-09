@@ -14,6 +14,7 @@ module.exports = {
     console.log('entries: ', entries)
     if (fs.statSync(fullDir).isDirectory() && fs.existsSync(entry)) {
       // entries[dir] = ['webpack-hot-middleware/client', entry]
+      if (entry.indexOf('cur') === -1) return entries;
       entries[dir] = [entry];
     }
     return entries;
