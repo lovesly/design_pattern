@@ -65,3 +65,9 @@ module.exports = {
 // 有点奇怪，这个配置了没啥用, 有没有可能是因为 sourceMap，导致看不到polyfill 后的结果？
 // "@babel/plugin-transform-runtime": "^7.7.6",
 // "@babel/runtime": "^7.7.7",
+
+/**
+ * 1. 完善多入口
+ * 2. ts？
+ * 3. hot-reload，live-server？
+ */
