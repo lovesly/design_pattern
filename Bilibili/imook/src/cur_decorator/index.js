@@ -1,3 +1,4 @@
+@annotation
 class Circle {
   constructor(name) {
     this.name = name;
@@ -15,11 +16,17 @@ class Decorator {
   draw() {
     this.circle.draw();
     this.setRedBorder(this.circle);
+    console.log(this.circle.annotated)
+    console.log(Circle.annotated)
   }
 
   setRedBorder(circle) {
     console.log('set red border: ', circle.name)
   }
+}
+
+function annotation(target) {
+  target.annotated = true;
 }
 
 let circle = new Circle('Yo');
