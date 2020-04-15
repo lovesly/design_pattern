@@ -1,3 +1,4 @@
+import Lib from './libs';
 @annotation
 class Circle {
   constructor(name) {
@@ -110,3 +111,10 @@ function log(target, name, descriptor) {
 
 const obj5 = new Demo5();
 obj5.add(3, 4);
+
+// libs
+const obj6 = new Lib();
+console.log('=====================');
+obj6.facepalm();
+obj6.facepalmHard();
+obj6.facepalmHarder();
