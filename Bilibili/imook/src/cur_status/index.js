@@ -1,3 +1,5 @@
+import './stateMachine';
+
 class State {
     constructor(color) {
         this.color = color;
