@@ -1,4 +1,5 @@
 import './stateMachine';
+import './promise';
 
 class State {
     constructor(color) {
