@@ -41,3 +41,12 @@ const pubsub = {};
     }
   }
 })(pubsub)
+
+// using it
+const messageLogger = function(topics, data) {
+  console.log(`Logging: ${topics}: ${data}`);
+};
+
+const subscription = pubsub.subscribe('inbox/newMessage', messageLogger);
+
+pubsub.publish('inbox/newMessage', 'Hello asshole');
