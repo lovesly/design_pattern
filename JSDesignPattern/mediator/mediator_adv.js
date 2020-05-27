@@ -120,8 +120,8 @@
 
     Mediator.prototype = {
         GetTopic: function(namespace) {
-            const topic = this._topics;
-            const namespaceHierarchy = namespace.split(':');
+            let topic = this._topics;
+            const namespaceHierarchy = namespace.split(":");
 
             if (namespace === '') {
                 return topic;
@@ -137,7 +137,7 @@
             }
             return topic;
         },
-        Subscribe: function(topicName = {}, fn, options, context = {}) {
+        Subscribe: function(topicName, fn, options = {}, context = {}) {
             const topic = this.GetTopic(topicName);
             const sub = topic.AddSubscriber(fn, options, context);
             return sub;
