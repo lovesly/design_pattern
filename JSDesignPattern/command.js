@@ -39,3 +39,50 @@ const generateCommand = (receiver) => () => {
 };
 
 setCommand({}, generateCommand(MenuBar));
+
+// example3
+// http://www.isjs.cn/?p=989
+
+// 有点意思，但是感觉和上面两个不太像
+const stock = function() {
+    this.name = 'baidu';
+    this.quantity = 100;
+    this.buy = function() {}
+    this.sell = function() {}
+};
+
+const BuyStock = function(stock) {
+    this.stock = stock;
+    this.execute = function() {
+        this.stock.buy();
+    }
+};
+
+var SellStock = function(stock){
+    this.stock = stock;
+    this.execute = function(){
+        this.stock.sell();
+    }
+};
+
+const Broker = function() {
+    this.orderList = [];
+    this.takeOrder = function(order) {
+        this.orderList.push(order);
+    }
+
+    this.placeOrders = function() {
+        this.orderList.map(item => {
+            item.execute();
+        })
+        this.orderList = [];
+    }
+};
+
+const stock = new stock();
+const buyStock = new BuyStock(stock);
+const sellStock = new SellStock(stock);
+const borker = new Broker();
+borker.takeOrder(buyStock);
+broker.takeOrder(sellStock);
+broker.placeOrders();
