@@ -12,6 +12,7 @@ function Truck(options) {
 
 function VehicleFactory() {}
 
+// 这个 vehicle class 设置有点多余啊
 VehicleFactory.prototype.vehicleClass = Car;
 VehicleFactory.prototype.createVehicle = function(options) {
     if (options.vehicleType === "car") {
@@ -31,3 +32,18 @@ const car = carFactory.createVehicle({
 
 console.log(car instanceof Car);
 console.log(car);
+
+// weird example
+function TruckFactory () {}
+TruckFactory.prototype = new VehicleFactory();
+TruckFactory.prototype.vehicleClass = Truck;
+
+const truckFactory = new TruckFactory();
+const myBigTruck = truckFactory.createVehicle({
+    state: 'omg...so bad',
+    color: 'pink',
+    wheelSize: 'so big',
+});
+
+console.log(myBigTruck instanceof Truck);
+console.log(myBigTruck);
