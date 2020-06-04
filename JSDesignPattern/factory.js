@@ -47,3 +47,29 @@ const myBigTruck = truckFactory.createVehicle({
 
 console.log(myBigTruck instanceof Truck);
 console.log(myBigTruck);
+
+// abstract function
+const AbstractVehicleFactory = (function() {
+    const types = {};
+    return {
+        getVehicle: function(type, customizations) {
+            const Vehicle = types[type];
+            return Vehicle ? new Vehicle(customizations) : null;
+        },
+        registerVehicle: function(type, Vehicle) {
+            const proto = Vehicle.prototype;
+            if (proto.drive && proto.breakDown) {
+                types[type] = Vehicle;
+            }
+            return AbstractVehicleFactory;
+        }
+    };
+})();
+
+AbstractVehicleFactory.registerVehicle('car', Car);
+AbstractVehicleFactory.registerVehicle('truck', Truck);
+
+const car = AbstractVehicleFactory.getVehicle('car', {
+    color: 'green',
+    state: 'like new'
+});
