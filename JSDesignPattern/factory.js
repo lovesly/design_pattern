@@ -49,6 +49,7 @@ console.log(myBigTruck instanceof Truck);
 console.log(myBigTruck);
 
 // abstract function
+// 没看明白，这个抽象在哪里，js 版本太简化了
 const AbstractVehicleFactory = (function() {
     const types = {};
     return {
